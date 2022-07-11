@@ -1,0 +1,30 @@
+{% extends 'topikstore/base.html' %}
+
+{% block title %}
+<title>Оформлення замовлення</title>
+{% endblock title %}
+
+{% block content %}
+    {% if cart|length > 0 %}
+    <h1>Оформлення замовлення</h1>
+    <div class = 'order-info'>
+        <h3>Ваше замовлення</h3>
+        <ul>
+            {% for item in cart %}
+                <li>
+                    {{ item.quantity }} х {{ item.product.product }}
+                    <span>${{ item.total_price }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+        <p>Total: ${{ cart.get_total_price }}</p>
+    </div>
+    <form action="." method="post" class="order-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p><input type="submit" value="Place order"></p>
+    </form>
+    {% else %}
+        Щоб оформити замовлення потрібно додати товари в корзину
+    {% endif %}
+{% endblock content %}

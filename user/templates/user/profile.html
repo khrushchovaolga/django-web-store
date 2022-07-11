@@ -1,0 +1,46 @@
+{% extends 'topikstore/base.html' %}
+
+{% block title %}
+<title>Профіль користувача</title>
+{% endblock title %}
+
+{% block content %}
+<ul class="breadcrumb">
+    <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a></li>
+    <li>Особистий профіль</li>
+    {% if user.is_authenticated %}
+        <li><a href="{% url 'user:logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Вийти із профілю</li></a>
+    
+</ul>
+
+    <div>
+        <h2 class="size_middle"><i class="fa-solid fa-arrow-right-from-bracket"></i> | Мій обліковий запис</h2>
+        <a class='size_small' href=""><i class="fa-solid fa-pen"></i> Змінити свої дані</a><br>
+        <a class='size_small' href=""><i class="fa-solid fa-pen"></i> Змінити пароль</a><br>
+        <a class='size_small' href=""><i class="fa-solid fa-pen"></i> Змінити адресу</a><br>
+        {% if favorites|length > 0 %}
+            <a href="{% url 'favorites:favorites_detail' %}"><i class="fa-solid fa-heart"></i> Список бажань</a><br>
+        {% else %}
+            <a class='size_small' href=""><i class="fa-solid fa-heart"></i> Список бажань пустий<br></a>
+        {% endif %}
+    </div>
+
+    <div>
+        <h2 class="size_middle">Мої замовлення</h2>
+        <a class='size_small' href="{% url 'user:history' %}"><i class="fa-solid fa-clock-rotate-left"></i> Історія замовлень</a><br>
+        {% if cart|length > 0 %}
+            <a class='size_small' href="{% url 'cart:cart_detail' %}"><i class="fa-solid fa-cart-shopping"></i> Кошик</a><br>
+        {% else %}
+            <a class='size_small' href=""><i class="fa-solid fa-cart-shopping"></i> Кошик пустий<br></a>
+        {% endif %}
+    </div>
+
+    <div>
+        <h2 class="size_middle">Підписка</h2>
+        <a class='size_small' href=""><i class="fa-solid fa-envelope"></i> Розсилка новин</a><br>
+    </div>
+
+{% else %}
+    {% include 'registration/login.html' %}
+{% endif %}
+{% endblock %}

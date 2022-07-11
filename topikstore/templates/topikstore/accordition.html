@@ -1,0 +1,97 @@
+<style>
+    .block-detail{
+        padding-left: 100px; padding-right: 100px;
+        padding-bottom: 30px;
+
+    }
+
+    .accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s;
+    }
+    
+    .active, .accordion:hover {
+        background-color: #ccc;
+    }
+    
+    .accordion:after {
+        content: '\002B';
+        color: #777;
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+    }
+    
+    .active:after {
+        content: "\2212";
+    }
+    
+    .panel {
+        padding: 0 18px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
+</style>
+
+<div class="block-detail">  
+    <button class="accordion">ПРАВИЛА ВИКОРИСТАННЯ ТА ПРОТИПОКАЗАННЯ</button>
+    <div class="panel">
+        <p>
+            <b>Правила використання:</b>
+            {{ product.rools_of_use.lower }}
+        </p>
+        <p>
+            <b>Протипоказання:</b>
+            {{ product.contraindications.lower }}
+        </p>
+    </div>
+    
+    <button class="accordion">СКЛАД</button>
+    <div class="panel">
+        <p>
+            <b>Склад:</b>
+            {{ product.compound }}
+        </p>
+        <p>
+            <b>PH:</b> {{ product.ph }}
+        </p>   
+    </div>
+    
+    <button class="accordion">УМОВИ ЗБЕРІГАННЯ І ТЕРМІН ПРИДАТНОСТІ</button>
+    <div class="panel">
+        <p>
+            <b>Умови зберігання:</b>
+            {{ product.storage_conditions.lower }}
+        </p>
+        <p>
+            <b>Термін придатності:</b>
+            {{ product.expiration_date.lower }}
+        </p>
+    </div>
+</div>    
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight){
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        } 
+      });
+    }
+</script>    

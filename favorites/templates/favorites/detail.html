@@ -1,0 +1,76 @@
+{% extends 'topikstore/base.html' %}
+
+{% block title %}
+    <title>Обране</title>
+{% endblock title %}
+
+{% block content %}
+{% load static %}
+
+<ul class="breadcrumb">
+    <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a></li>
+    <li>Обране ( {{ favorites_products|length }} )</li>
+</ul>
+
+<div>
+    {% if favorites_products|length > 0 %}
+    <table class="favorites_list">
+        <thead>
+            <tr>
+                <th>Фото товару</th>
+                <th>Найменування</th>
+                <th>Ціна</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in favorites_products %}
+                <tr>
+                    <td>
+                        <a href="{{ product.get_absolute_url }}">
+                            <img src="{{ product.image.url }}" alt="{{ product }}" width="150px" height="150px">
+                        </a>
+                    </td>
+                    <td>{{ product }}</td>
+                    <td>₴{{ product.price }}</td>
+                    <td>
+                        <button data-modal-btn="{{product.pk}}" class="button-buy">Купити</button>
+                        <div data-modal-window="{{product.pk}}" class="modal">
+                        <div class="modal_content">
+                            <div class="modal_inner">
+                                <div class="modal_title">Додати в корзину</div>
+                                <div class="close_modal_window">&times;</div>
+                            </div>
+                            <p>
+                                <div class="container"><a href="{{product.get_absolute_url}}">
+                                    <img src="{{product.image.url}}" alt="{{ product }}" class="image" width = "305x" height="250px"></a>
+                                </div>
+                                <div class = 'name_product'>{{ product }}</div>
+                                <div class = 'price_product'>{{ product.price }} грн</div>
+                                <form action="{% url 'cart:cart_add' product.pk %}" method="POST">
+                                    {% csrf_token %}
+                                    <div class = 'sel'>
+                                    {{ cart_product_form.quantity }}
+                                    </div>
+                                    <input class = 'button-buy' type="submit" value="Додати в корзину">
+                                </form>
+                            </p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="{% url 'favorites:favorites_remove' product.pk %}">
+                            <i class="fa-solid fa-xmark"></i>
+                        </a>
+                    </td> 
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+    Поки що немає обраних продуктів
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,186 @@
+body{
+    margin: 0px;
+}
+
+.container {
+    position: relative;
+}
+
+.post{
+    display: inline-table;
+    width: 250px; height: 450px;
+    text-align: center; line-height: 140%; background-color: rgba(0, 0, 0, 0);
+    margin: 10px; 
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:rgba(0, 0, 0, 0.864);
+    overflow: auto;
+}
+
+.name_product{
+    padding: 5px;
+    font-size: 18px;
+}
+
+.price_product{
+    font-size: 21px;
+    font-weight: bolder;
+    padding: 5px;
+}
+
+.button-buy{
+    background-color: rgba(0, 0, 0, 0.863);
+    padding-top: 10px; padding-bottom: 10px;
+    padding-left: 50px; padding-right: 50px;
+    color:aliceblue;
+    border-radius: 90px;
+    border: none;
+    text-decoration: none;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 18px;
+}
+
+.button-buy:hover{
+    background-color: rgb(0, 0, 0);
+}
+
+.block-posts{
+    padding-top: 20px; padding-bottom: 50px;
+    padding-left: 75px; padding-right: 75px;
+}
+
+/* Modal for button-buy */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal_content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 22%;
+      overflow: auto;
+}
+
+.modal .modal_content .close_modal_window {
+    color:grey;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal_inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color:rgb(86, 86, 86);
+}
+
+.modal_title {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.sel{
+    display: inline;
+}
+
+.sel select{
+    font-size: 15px;
+    padding: 6px;
+}
+
+.about_product{
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgba(0, 0, 0, 0.814);
+    text-align: justify;
+    display: inline;
+}
+
+.block-recently-viewed{
+
+}
+
+.size_large{
+    font-size: 28px;
+    line-height: 150%;
+    padding-right: 100px; padding-left: 100px;
+    text-align: justify;
+}
+
+.size_middle{
+    padding-right: 100px; 
+    padding-left: 100px;
+    font-size: 22px;
+    color:rgba(0, 0, 0, 0.562);
+    line-height: 150%;
+    text-decoration: none;
+    text-align: justify;
+}
+
+.size_small{
+    padding-right: 100px; 
+    padding-left: 100px;
+    font-size: 18px;
+    color:rgba(0, 0, 0, 0.538);
+    line-height: 150%;
+    text-decoration: none;
+    text-align: justify;
+}
+
+.inline{
+    display: inline-table;
+}
+
+.favorites{
+    color:white;
+    background-color: rgba(0, 0, 0, 0.863);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 18px;
+    padding-top: 10px; padding-bottom: 10px;
+    border-radius: 90px;
+    text-decoration: none;
+    border:none;
+}
+
+.selected {
+    color: black;
+    background-color: rgb(255, 255, 255);
+}
+
+.favorites:hover{
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.178);;
+}
+
+.block-buttons{
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 10px; padding-bottom: 10px;
+}
+
+.volume{
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    display: inline-table;
+}
+
+.volume:hover{
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.244);
+}
+
+.alone_window{
+    height: 200px;
+}

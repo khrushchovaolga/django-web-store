@@ -1,0 +1,47 @@
+{% extends 'topikstore/base.html' %}
+
+{% block title %}
+<title>Історія замовлень</title>
+{% endblock title %}
+
+{% block content %}
+<ul class="breadcrumb">
+    <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a></li>
+    <li><a href="{% url 'user:profile' %}">Особистий профіль</a></li>
+    <li>Історія замовлень</li>
+</ul>
+
+<div>
+    {% for order in orders %}
+        <div>
+        <h2 class="size_middle">Замовлення №{{ order.id }}</h2>
+        {% for item in order.items.all %}
+            <div class="size_small">
+                <table class="list_items">
+                    <tr>
+                    <td><img src="{{ item.product.image.url }}" alt="{{ item.product }}" width="100px" height="100px"></td>
+                    <td>{{ item.product }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.price }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="size_small">
+                Дата доставки: {{ order.data_create }} <br>
+                Місто: {{ order.city }} <br>
+                Пошта: {{ order.post }} №{{ order.number_of_post }} <br>
+                Статус: Нове замовлення
+            </div>
+        {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+
+<style>
+    .list_items{
+        text-align: center;
+        width: 50%;
+    }
+</style>
+
+{% endblock content %}
