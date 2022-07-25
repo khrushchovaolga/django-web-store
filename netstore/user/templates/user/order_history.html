@@ -1,0 +1,48 @@
+{% extends 'topikstore/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a></li>
+        <li><a href="{% url 'user:profile' %}">{% trans 'Особистий профіль' %}</a></li>
+        <li>{{ title }}</li>
+    </ul>
+{% endblock breadcrumb %}
+
+{% block content %}
+    <div>
+        {% for order in orders %}
+            <div>
+                <h2 class="middle">{% trans 'Замовлення' %} №{{ order.id }}</h2>
+                
+                {% for item in order.items.all %}
+                    <div class="small">
+                        <table class="list_items">
+                            <tr>
+                            <td><img src="{{ item.product.image.url }}" alt="{{ item.product }}" width="100px" height="100px"></td>
+                            <td>{{ item.product }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>{{ item.price }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="small">
+                        {% trans 'Дата створення' %}: {{ order.data_create }}<br>
+                        {% trans 'Місто' %}: {{ order.city }}<br>
+                        {% trans 'Пошта' %}: {{ order.post }} №{{ order.number_of_post }}<br>
+                        {% trans 'Статус' %}: {{ order.status }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <style>
+        .list_items{
+            text-align: center;
+            width: 50%;
+        }
+    </style>
+
+{% endblock content %}

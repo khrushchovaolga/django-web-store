@@ -1,0 +1,86 @@
+{% extends 'topikstore/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a></li>
+        <li>{{ title }}</li>
+    </ul>
+
+    <form method="post" style="max-width:500px;margin:auto">
+        {% csrf_token %}
+        <div class="input-container">
+            <span class="icon"><i class="fa-solid fa-user"></i></span>
+            {{ form.username }}
+        </div>
+        <div class="form-error">{{ form.username.errors }}</div>
+
+        <div class="input-container">
+            <span class="icon"><i class="fa-solid fa-envelope"></i></span>
+            {{ form.email }}
+        </div>
+        <div class="form-error">{{ form.email.errors }}</div>
+
+        <div class="input-container">
+            <span class="icon"><i class="fa-solid fa-key"></i></span>
+            {{ form.password1 }}
+        </div>
+        <div class="form-error">{{ form.password1.errors }}</div>
+
+        <div class="input-container">
+            <span class="icon"><i class="fa-solid fa-key"></i></span>
+            {{ form.password2 }}
+        </div>
+        <div class="form-error">{{ form.password2.errors }}</div>
+
+        <input class="btn" type="submit" value="{% trans 'Реєстрація' %}">
+
+        <p>{% trans 'Зареєстровані? Авторизуватись можна' %}<a href="{% url 'user:login' %}"> {% trans 'тут' %}</a>.</p>
+    </form>
+
+    <style>
+        * {box-sizing: border-box;}
+
+        .input-container {
+            display: -ms-flexbox; /* IE10 */
+            display: flex;
+            width: 100%;
+            margin-bottom: 15px;
+            background-color: rgb(64, 64, 64);
+        }
+
+        .icon {
+            padding-left: 20px;
+            padding-top: 10px; padding-bottom: 10px;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 5px;
+            outline: none;
+        }
+
+        .input-field:focus {
+            border: 2px solid green;
+        }
+
+        /* Set a style for the submit button */
+        .btn {
+            background-color: green;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+        .btn:hover {
+            opacity: 1;
+        }
+    </style>
+{% endblock content %}

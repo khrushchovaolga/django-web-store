@@ -1,0 +1,118 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-21 13:34+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\templates\registration\login.html:25
+msgid "Авторизація"
+msgstr "Авторизация"
+
+#: .\templates\registration\login.html:27
+msgid "Ще не зареєстровані? Зареєструватись можна "
+msgstr "Еще не зарегистрированы? Зарегистрироваться можно "
+
+#: .\templates\registration\login.html:27
+#: .\templates\registration\register.html:39
+msgid "тут"
+msgstr "здесь"
+
+#: .\templates\registration\register.html:37
+msgid "Реєстрація"
+msgstr "Регистрация"
+
+#: .\templates\registration\register.html:39
+msgid "Зареєстровані? Авторизуватись можна"
+msgstr "Зарегистрированы? Авторизироваться можна"
+
+#: .\templates\user\order_history.html:8 .\templates\user\profile.html:8
+msgid "Особистий профіль"
+msgstr "Личный профиль"
+
+#: .\templates\user\order_history.html:15
+msgid "Замовлення"
+msgstr "Заказ"
+
+#: .\templates\user\order_history.html:29
+msgid "Дата створення"
+msgstr "Дата создание"
+
+#: .\templates\user\order_history.html:30
+msgid "Місто"
+msgstr "Город"
+
+#: .\templates\user\order_history.html:31
+msgid "Пошта"
+msgstr "Почта"
+
+#: .\templates\user\order_history.html:32
+msgid "Статус"
+msgstr "Статус"
+
+#: .\templates\user\profile.html:10
+msgid "Вийти із профілю"
+msgstr "Выйти с профиля"
+
+#: .\templates\user\profile.html:15
+msgid "Мій обліковий запис"
+msgstr "Моя учетная запись"
+
+#: .\templates\user\profile.html:17
+msgid "Змінити свої дані"
+msgstr "Изменить свои данные"
+
+#: .\templates\user\profile.html:18
+msgid "Змінити пароль"
+msgstr "Изменить пароль"
+
+#: .\templates\user\profile.html:19
+msgid "Змінити адресу"
+msgstr "Изменить адрес"
+
+#: .\templates\user\profile.html:21
+msgid "Список бажань"
+msgstr "Список желаний"
+
+#: .\templates\user\profile.html:23
+msgid "Список бажань пустий"
+msgstr "Список желаний пуст"
+
+#: .\templates\user\profile.html:28
+msgid "Мої замовлення"
+msgstr "Мои заказы"
+
+#: .\templates\user\profile.html:29
+msgid "Історія замовлень"
+msgstr "История заказов"
+
+#: .\templates\user\profile.html:31
+msgid "Кошик"
+msgstr "Корзина"
+
+#: .\templates\user\profile.html:33
+msgid "Кошик пустий"
+msgstr "Корзина пустая"
+
+#: .\templates\user\profile.html:38
+msgid "Підписка"
+msgstr "Подписка"
+
+#: .\templates\user\profile.html:39
+msgid "Розсилка новин"
+msgstr "Рассылка новостей"
