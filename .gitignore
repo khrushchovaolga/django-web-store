@@ -15,11 +15,11 @@ netstore/topikstore/locale/
 netstore/orders/locale/
 netstore/user/locale/
 
-nestore/cart/migrations/
-nestore/favorites/migrations/
-nestore/orders/migrations/
-nestore/topikstore/migrations/
-nestore/user/migrations/
+netstore/cart/migrations/
+netstore/favorites/migrations/
+netstore/orders/migrations/
+netstore/topikstore/migrations/
+netstore/user/migrations/
 
 
 venv/
