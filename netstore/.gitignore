@@ -1,2 +1,7 @@
 db.sqlite3
 cart/__pycache__/
+favorites/__pycache__/
+netstore/__pycache__/
+orders/__pycache__/
+topikstore/__pycache__/
+user/__pycache__/
