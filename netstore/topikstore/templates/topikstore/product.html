@@ -1,0 +1,92 @@
+{% extends 'topikstore/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{{ product }}{% endblock title %}
+
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a></li>
+        <li><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></li>
+        <li><a href="{{ product.subcategory.get_absolute_url }}">{{ product.subcategory }}</a></li>
+        <li>{{ product }}</li>
+    </ul>
+{% endblock breadcrumb %}
+
+
+{% block content %}
+    <div class="slideshow-container">
+        {% for i in images %}
+            <div class="mySlides">
+                <img class='myImg' src="{{ i.photo.url }}" alt="{{ product }}" width="400px" height="400px">
+            </div>
+        {% endfor %}
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+
+        <div class="dot-container">
+            {% for i in images %}
+                <span class="dot" onclick="currentSlide(i)"></span>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div id="myModal" class="modal">
+        <span class="close">×</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+    </div>
+
+    <div class="about_product">
+        <p class='large'>{{ product }}</p>
+        <p class='middle'>{{ product.subcategory }}</p>
+        <p class='large'>{{ product.price }} грн</p>
+        <p class='small'>{{ product.short_description }}</p>
+        <div class="block-buttons">
+            <div style="display:inline-table;">
+                <button data-modal-btn="{{ product.pk }}" class="button-buy">{% trans 'Купити' %}</button>
+            </div>
+            {% include 'topikstore/buttons/cart_add.html' with product=product %}
+            <div style="display:inline-table;">
+                {% include 'topikstore/buttons/favorites_add.html' %}
+            </div>
+        </div>
+        {% if other_sizes|length > 0 %}
+            <p class='small'><b>{% trans "Інші об'єми в наявності" %}:</b><br>
+                {% for i in other_sizes %}
+                    <div class="size">
+                        <a style="text-decoration: none;" href="{{ i.get_absolute_url }}">
+                            <img src="{{ i.image.url }}" alt="{{ i }}" width="100px" height="100px"><br>
+                            {{ i.size }} <br>
+                        </a>
+                    </div>
+                {% endfor %}
+            </p>
+        {% else %}
+            <div style="height:100px;"></div>
+        {% endif %}
+    </div>
+
+    <div class = 'options'>
+        <button class="tablink" onclick="openPage('Description', this, 'grey')" id = 'defaultOpen'>{% trans 'Опис' %}</button>
+        <button class="tablink" onclick="openPage('Feedback', this, 'grey')">{% trans 'Відгуків' %} ({{ product.feedbacks.count }})</button>
+        <button class="tablink" onclick="openPage('Questions', this, 'grey')">{% trans 'Питання по товару' %} ({{ product.questions.count }})</button>
+    </div>  
+    <div id="Description" class="tabcontent">
+        {% include 'topikstore/options/description.html' %}
+    </div>
+    <div id="Feedback" class="tabcontent">
+        {% include 'topikstore/options/feedbacks.html' %}
+    </div>
+    <div id="Questions" class="tabcontent">
+        {% include 'topikstore/options/questions.html' %}
+    </div>
+    
+    {% if recently_viewed|length > 0 %}
+        <div class="block-recently-viewed">
+            <div class="middle">{% trans 'НЕЩОДАВНО ПЕРЕГЛЯНЕНО' %}</div>
+            {% include 'topikstore/parts/posts.html' with products=recently_viewed %}
+        </div>
+    {% endif %}
+
+{% endblock %}

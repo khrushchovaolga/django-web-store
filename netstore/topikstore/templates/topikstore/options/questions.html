@@ -1,0 +1,37 @@
+{% load i18n %}
+{% load static %}
+
+<div class="user-field">
+    <h3>{% trans 'Питання' %}:</h3>
+    {% if questions %}
+        {% for i in questions %}
+            <div>
+                <img class = 'icon' src="{% static 'topikstore/images/question.jpg' %}" alt="user" width="60" height="60">
+                <b>{{ i.author_name }} - {{ i.date_create|date:'d.m.Y' }}</b>
+                <div class='user-text'>
+                    {{ i }}<br>
+                    {% if i.answer %}
+                        <span class = 'answer'>
+                            <br><b>{% trans 'Наша відповідь' %}:</b><br>
+                            {% trans 'Доброго дня' %}, {{ i.author_name }}<br>
+                            {{ i.answer }} <br>
+                            {% trans 'Дякуємо за ваше питання' %}<br>
+                            {% trans 'З повагою, команда Topikstore' %}<br>
+                        </span>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+        {% include 'topikstore/parts/pagination.html' with name=questions paginator=paginator_question %}
+    {% else %}
+        {% trans 'Питання про цей товар відсутні' %}.
+    {% endif %}
+</div>
+{% if user.is_authenticated %}
+    <div class = 'user-field'>
+        <h3>{% trans 'Залишити своє питання' %}:</h3>
+        <div class="container_feedback">
+            {% include 'topikstore/forms/userform.html' with name='question' form_name=form_question %}
+        </div>
+    </div> 
+{% endif %}

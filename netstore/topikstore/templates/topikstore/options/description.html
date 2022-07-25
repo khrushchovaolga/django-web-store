@@ -1,0 +1,9 @@
+{% load i18n %}
+
+{% autoescape off %}
+    <div class = 'small'>
+        {{ product.full_description|linebreaks }}
+    </div>  
+{% endautoescape %}
+
+{% include 'topikstore/parts/accordition.html' with product=product.detail %}

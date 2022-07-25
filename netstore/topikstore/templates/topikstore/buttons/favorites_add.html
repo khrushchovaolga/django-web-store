@@ -1,0 +1,17 @@
+{% load i18n %}
+
+{% if is_favorite %}
+    <form class='inline' action="{% url 'favorites:favorites_remove' product.pk %}" method="post">
+        {% csrf_token %}
+        <button class="favorites selected" type="submit">
+            {% trans 'В обраному' %} <i class="fa-solid fa-circle-check"></i>
+        </button>
+    </form>
+{% else %}
+    <form class='inline' action="{% url 'favorites:favorites_add' product.pk %}" method="post">
+        {% csrf_token %}
+        <button class="favorites selected" type="submit">
+            {% trans 'Додати в обране' %} <i class="fa-brands fa-gratipay"></i>
+        </button>
+    </form>
+{% endif %}

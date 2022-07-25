@@ -1,0 +1,26 @@
+{% load i18n %}
+
+<div data-modal-window="{{ product.pk }}" class="modal">
+    <div class="modal_content">
+        <div class="modal_inner">
+            <div class="modal_title">{% trans 'Додати в кошик' %}</div>
+            <div class="close_modal_window">&times;</div>
+        </div>
+        <p>
+            <div class="container">
+                <a href="{{ product.get_absolute_url }}">
+                    <img src="{{ product.image.url }}" alt="{{ product }}" class="image" width = "305x" height="250px">
+                </a>
+            </div>
+            <div style="padding: 5px; font-size: 18px;">{{ product }}</div>
+            <div style="font-size: 21px; padding: 5px;">{{ product.price }} грн</div>
+            <form action="{% url 'cart:cart_add' product.pk %}" method="POST">
+                {% csrf_token %}
+                <div style="display: inline;">
+                    {{ cart_product_form.quantity }}
+                </div>
+                <input class = 'button-buy' type="submit" value="{% trans 'В кошик' %}">
+            </form>
+        </p>
+    </div>
+</div>

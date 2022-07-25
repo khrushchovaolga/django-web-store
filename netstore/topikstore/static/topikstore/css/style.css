@@ -1,0 +1,604 @@
+body{
+    margin: 0px;
+}
+
+.container {
+    position: relative;
+}
+
+.post{
+    display: inline-table;
+    width: 250px; height: 450px;
+    text-align: center; line-height: 140%; background-color: rgba(0, 0, 0, 0);
+    margin: 10px; 
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:rgba(0, 0, 0, 0.864);
+    overflow: auto;
+}
+
+.button-buy{
+    background-color: rgba(0, 0, 0, 0.863);
+    padding-top: 10px; padding-bottom: 10px;
+    padding-left: 50px; padding-right: 50px;
+    color:aliceblue;
+    border-radius: 90px;
+    border: none;
+    text-decoration: none;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 18px;
+}
+
+.button-buy:hover{
+    background-color: rgb(0, 0, 0);
+}
+
+.block-posts{
+    padding-top: 20px; padding-bottom: 50px;
+    padding-left: 75px; padding-right: 75px;
+}
+
+/* Modal for button-buy */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+
+.modal_content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 22%;
+      overflow: auto;
+}
+
+.modal .modal_content .close_modal_window {
+    color:grey;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal_inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color:rgb(86, 86, 86);
+}
+
+.modal_title {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+select{
+    font-size: 15px;
+    padding: 6px;
+}
+
+.about_product{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgba(0, 0, 0, 0.814);
+    text-align: justify;
+    display: inline;
+}
+
+.large{
+    font-size: 28px;
+    line-height: 150%;
+    padding-right: 100px; padding-left: 100px;
+    text-align: justify;
+}
+
+.middle{
+    padding-right: 100px; 
+    padding-left: 100px;
+    font-size: 22px;
+    color:rgba(0, 0, 0, 0.562);
+    line-height: 150%;
+    text-decoration: none;
+    text-align: justify;
+}
+
+.small{
+    padding-right: 100px; 
+    padding-left: 100px;
+    font-size: 18px;
+    color:rgba(0, 0, 0, 0.538);
+    line-height: 150%;
+    text-decoration: none;
+    text-align: justify;
+}
+
+.favorites{
+    color:white;
+    background-color: rgba(0, 0, 0, 0.863);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 18px;
+    padding-top: 10px; padding-bottom: 10px;
+    border-radius: 90px;
+    text-decoration: none;
+    border:none;
+}
+
+.selected {
+    color: black;
+    background-color: rgb(255, 255, 255);
+}
+
+.favorites:hover{
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.178);;
+}
+
+.block-buttons{
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 10px; padding-bottom: 10px;
+}
+
+.size{
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    display: inline-table;
+}
+
+.size:hover{
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.244);
+}
+
+/* Navbar */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 12px 5px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.logotype{
+    padding: 10px;
+    font-size: 50px;
+    display: inline;
+}
+
+#header{
+    background-color: #333;
+    color:aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.right{
+    float:none;
+    margin: 0px;
+}
+
+.right2 {
+    float: right;
+    overflow: hidden;
+}
+
+/*Breadcrumb*/
+
+/* Style the list */
+ul.breadcrumb {
+    padding: 10px 30px;
+    list-style: none;
+    background-color: #eee;
+    margin-top: 0px;
+}
+  
+/* Display list items side by side */
+ul.breadcrumb li {
+    display: inline;
+    font-size: 14px;
+}
+  
+  /* Add a slash symbol (/) before/behind each list item */
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+}
+  
+/* Add a color to all links inside the list */
+ul.breadcrumb li a {
+    color: #3d3d3d89;
+    text-decoration: none;
+}
+  
+/* Add a color on mouse-over */
+ul.breadcrumb li a:hover {
+    color:#242424d8;
+    text-decoration: underline;
+}
+
+/* Product */
+
+/* for user, home */
+.icon{
+    border-radius: 90px;
+    margin-right: 25px;
+    float:left;
+}
+
+.caption{
+    font-size: 30px; 
+    padding-left: 25px; padding-right: 150px;
+    padding-top: 15px; padding-bottom: 10px;
+}
+
+.subcategory{
+    font-size: 22px;
+    color:rgba(0, 0, 0, 0.562);
+}
+
+.price{
+    font-size: 30px;
+    color:rgba(0, 0, 0, 0.73);
+}
+
+.brand{
+    font-size: 20px;
+    color:rgba(0, 0, 0, 0.744);
+    line-height: 150%;
+    text-align: justify;
+    padding-top: 15px;
+    padding-bottom: 50px;
+}
+
+.big_description{
+    font-size:17px;
+    text-align: justify;
+    padding-left: 150px; padding-right: 150px;
+}
+
+.btn-buy{
+    background-color: black;
+    padding-top: 10px; padding-bottom: 10px;
+    padding-left: 50px; padding-right: 50px;
+    color:aliceblue;
+    border-radius: 90px;
+    margin: 5px;
+    border: none;
+    font-size: 18px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.btn-buy:hover{
+    background-color: rgba(0, 0, 0, 0.651);
+}
+
+.left{
+    float:left;
+}
+
+/* tablink Questions */
+#Questions{
+    padding-left: 150px; padding-right: 75px;
+    font-size: 17px;
+}
+
+
+/* tablink Feedback */
+#Feedback{
+    padding-left: 150px; padding-right: 75px;
+    font-size: 17px;
+  }
+ 
+  
+/* field for icon, name, date, feedback/question */
+.user-field{
+    padding-top: 5px;
+    padding-bottom: 15px;
+    line-height: 150%;
+    width: 47%;
+    display: inline-table;
+}
+
+/* text of feedback/question */
+.user-text{
+    border-radius: 10px;
+    margin-bottom: 30px; margin-left: 80px;
+    padding: 5px;
+    font-size: 18px;
+}
+
+.answer{
+    line-height: 170%;
+    font-size: 17px;
+}
+
+.similar{
+    padding-left: 150px; padding-right: 75px;
+    font-size: 20px;
+}
+
+.post{
+    display: inline-table;
+    width: 250px; height: 450px;
+    text-align: center; line-height: 140%; background-color: rgba(0, 0, 0, 0);
+    margin: 10px; 
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:rgba(0, 0, 0, 0.864);
+    overflow: auto;
+}
+
+.name_product{
+    padding: 5px;
+    font-size: 18px;
+}
+
+.price_product{
+    font-size: 21px;
+    font-weight: bolder;
+    padding: 5px;
+}
+
+.button-buy{
+    background-color: rgba(0, 0, 0, 0.863);
+    padding-top: 10px; padding-bottom: 10px;
+    padding-left: 50px; padding-right: 50px;
+    color:aliceblue;
+    border-radius: 90px;
+    margin: 5px;
+    border: none;
+    text-decoration: none;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.button-buy:hover{
+    background-color: rgb(0, 0, 0);
+}
+
+
+/* Slideshow */
+/* Slideshow container */
+.slideshow-container {
+    margin-right: 100px;
+    margin-left: 100px;
+    width: 450px;
+    height: 500px;
+    position: relative;
+    float:left;
+}
+  
+/* Slides */
+.mySlides {
+    display: none;
+    padding: 10px;
+    text-align: center;
+}
+  
+/* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -20px;
+    padding: 16px;
+    color: #888;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+  
+/* Position the "next button" to the right */
+.next {
+    position: absolute;
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+  
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+}
+  
+/* The dot/bullet/indicator container */
+.dot-container {
+    text-align: center;
+    padding: 10px;
+    /*background: #ddd;*/
+}
+  
+/* The dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+  
+/* Add a background color to the active dot/circle */
+.active, .dot:hover {
+    background-color: #717171;
+}
+  
+/* Add an italic font style to all quotes */
+q {font-style: italic;}
+  
+.myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+  
+.myImg:hover {opacity: 0.7;}
+  
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 25px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+  
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 600px;
+}
+  
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+  
+/* Add Animation */
+.modal-content, #caption {    
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+  
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+  
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+  
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+  
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+  
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+          width: 100%;
+    }
+}
+
+/* Options/Tablinks */
+/* Style tab links */
+.tablink {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 16px 16px;
+    font-size: 17px;
+    width: 20%;
+}
+  
+.tablink:hover {
+    background-color: rgb(204, 204, 204);
+}
+  
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+    color: rgb(91, 83, 83);
+    display: none;
+    height: 100%;
+}
+  
+.options{
+    padding-left: 30%;
+    padding-top: 2%;
+}

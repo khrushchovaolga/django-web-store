@@ -1,0 +1,72 @@
+{% load static %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a41629d91d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'topikstore/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'topikstore/css/cart.css' %}">
+
+    <title>{% block title %}{{ title }}{% endblock title %}</title>
+
+</head>
+<body>
+    <div id='header'>
+        <div class='logotype'>
+            <a style="color:white; text-decoration: none;" href="{% url 'home' %}">{% trans 'Topikstore' %}</a> 
+        </div>
+    </div> 
+    <div class="navbar">
+        {% for cat in categories %}
+            <div class="dropdown">
+                <button class="dropbtn">
+                    <a href="{{ cat.get_absolute_url }}">{{ cat }}</a>
+                </button>
+            <div class="dropdown-content">
+                {% for subcat in cat.subcats.all %}
+                <a href="{{ subcat.get_absolute_url }}">{{ subcat }}</a>
+                {% endfor %}
+            </div>
+            </div>
+        {% endfor %}
+        {% if cart|length > 0 %}
+            <div class="dropdown right2">
+                <button class="dropbtn">
+                    <a href="{% url 'cart:cart_detail' %}"><i class="fa-solid fa-cart-shopping"></i></a>
+                </button>
+            </div>
+        {% endif %}
+        {% if favorites_products|length > 0 %}
+            <div class="dropdown right2">
+                <button class="dropbtn">
+                    <a href="{% url 'favorites:favorites_detail' %}"><i class="fa-solid fa-heart"></i></a>
+                </button>
+            </div>
+        {% endif %}
+        <div class="dropdown right2">
+            <button class="dropbtn">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'user:profile' %}"><i class="fa-solid fa-user-check"></i></a>
+                {% else %}
+                    <a href="{% url 'user:login' %}"><i class="fa-solid fa-user"></i></a>
+                {% endif %}
+            </button>
+        </div>
+    </div>
+    {% block breadcrumb %}
+    {% endblock breadcrumb %}
+    
+    {% include 'topikstore/forms/language.html' %}
+
+    {% block content %}
+    {% endblock content %}
+
+    <script src="{% static 'topikstore/js/scr_cart.js' %}"></script>
+    <script src="{% static 'topikstore/js/scr_product.js' %}"></script>
+
+</body>
+</html>

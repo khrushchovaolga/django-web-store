@@ -1,0 +1,29 @@
+{% load i18n %}
+{% load static %}
+
+<div class="user-field">
+    <h3>{% trans 'Відгуки' %}:</h3>
+    {% if feedbacks %}
+        {% for i in feedbacks %}
+            <div>
+                <img class = 'icon' src="{% static 'topikstore/images/user.svg' %}" alt="user" width="60" height="60">
+                <b>{{ i.author_name }} - {{ i.date_create|date:'d.m.Y' }}</b>
+                <div class='user-text'>{{ i }}</div>
+            </div>
+        {% endfor %}
+    {% include 'topikstore/parts/pagination.html' with name=feedbacks paginator=paginator_feedback %}
+    {% else %}
+        {% trans 'Відгуки з цього товару відсутні' %}.
+    {% endif %}
+</div>
+
+{% if user.is_authenticated %}
+    <div class = 'user-field'>
+        <h3>{% trans 'Залишити свій відгук' %}:</h3>
+        <div class="container_feedback">
+            {% include 'topikstore/forms/userform.html' with name='feedback' form_name=form_feedback %}
+        </div>
+    </div>
+{% else %}
+    {% trans 'Щоб залишити комментар, необхідно' %} <a href="{% url 'user:login' %}">{% trans 'авторизуватися' %}</a>.
+{% endif %}      

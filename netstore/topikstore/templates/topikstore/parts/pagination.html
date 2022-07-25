@@ -1,0 +1,40 @@
+{% load i18n %}
+
+<div class="pagination">
+    <span class="step-links">
+        <div>
+            {% if name.has_previous %}
+                <a href="?page={{ name.previous_page_number }}">«</a>
+            {% endif %}
+            
+            {% for i in paginator.page_range %}
+                {% if name.number == i %}
+                    <a class = 'active' href="">{{ i }}</a>
+                {% else %}
+                    <a href="?page={{i}}">{{ i }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if name.has_next %}
+                <a id = '{{name.next_page_number}}' href="?page={{ name.next_page_number }}">»</a>
+            {% endif %}
+        </div>
+    </span>
+</div>
+
+<style>
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        transition: background-color .3s;
+    }
+    
+    .pagination a.active {
+        background-color: red;
+        color: white;
+    }
+    
+    .pagination a:hover:not(.active) {background-color: #ddd;}
+</style>
