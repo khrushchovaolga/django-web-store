@@ -1,0 +1,56 @@
+{% extends 'topikstore/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans 'Обране' %}{% endblock title %}
+
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a></li>
+        <li><a href="{% url 'user:profile' %}">{% trans 'Особистий профіль' %}</a></li>
+        <li>{% trans 'Обране' %} ( {{ favorites_products|length }} )</li>
+    </ul>
+{% endblock breadcrumb %}
+
+{% block content %}
+    <div>
+        {% if favorites_products|length > 0 %}
+        <table class="favorites_list">
+            <thead>
+                <tr>
+                    <th>{% trans 'Фото товару' %}</th>
+                    <th>{% trans 'Найменування' %}</th>
+                    <th>{% trans 'Ціна' %}</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in favorites_products %}
+                    <tr>
+                        <td>
+                            <a href="{{ product.get_absolute_url }}">
+                                <img src="{{ product.image.url }}" alt="{{ product }}" width="150px" height="150px">
+                            </a>
+                        </td>
+                        <td>{{ product }}</td>
+                        <td>₴{{ product.price }}</td>
+                        <td>
+                            <button data-modal-btn="{{product.pk}}" class="button-buy">{% trans 'Купити' %}</button>
+                            {% include 'topikstore/buttons/cart_add.html' %}
+                        </td>
+                        <td>
+                            <a href="{% url 'favorites:favorites_remove' product.pk %}">
+                                <i class="fa-solid fa-xmark"></i>
+                            </a>
+                        </td> 
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        {% trans 'Поки що немає обраних продуктів' %}
+    {% endif %}
+
+{% endblock content %}
