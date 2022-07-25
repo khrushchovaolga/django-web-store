@@ -1,0 +1,87 @@
+{% extends 'topikstore/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a></li>
+        <li><a href="{% url 'orders:order_create' %}">{% trans 'Кошик' %}</a></li>
+        <li>{{ title }}</li>
+    </ul>
+{% endblock breadcrumb %}
+
+{% block content %}
+    {% if cart|length > 0 %}
+    <div class = 'order-info'>
+        <h3>{% trans 'Ваше замовлення' %}</h3>
+        <ul>
+            {% for item in cart %}
+                <li>
+                    {{ item.quantity }} х {{ item.product.product }}
+                    <span>${{ item.total_price }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+        <p>{% trans 'Всього, грн' %}: {{ cart.get_total_price }}</p>
+    </div>
+
+    <form action="{% url 'orders:order_create' %}" method="post" style="max-width:500px;margin:auto">
+        {% for f in form %}
+            <div class="input-container">
+                {{ f }}
+            </div>
+            <div class="form-error">{{ f.username.errors }}</div>
+        {% endfor %}
+        <p><input type="submit" value="Place order"></p>
+        {% csrf_token %}
+    </form>
+    {% else %}
+        {% trans 'Щоб оформити замовлення потрібно додати товари в корзину' %}
+    {% endif %}
+
+    <style>
+        * {box-sizing: border-box;}
+
+        .input-container {
+            display: -ms-flexbox; /* IE10 */
+            display: flex;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .icon {
+            padding-left: 20px;
+            padding-top: 10px; padding-bottom: 10px;
+            text-align: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 5px;
+            outline: none;
+        }
+
+        .input-field:focus {
+            border: 2px solid green;
+        }
+
+        /* Set a style for the submit button */
+        .btn {
+            background-color: green;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+        .btn:hover {
+            opacity: 1;
+        }
+    </style>
+{% endblock content %}

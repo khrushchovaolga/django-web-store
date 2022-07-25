@@ -1,0 +1,23 @@
+{% extends 'topikstore/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+{% block breadcrumb %}
+    <ul class="breadcrumb">
+        <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a></li>
+        <li><a href="{% url 'orders:order_create' %}">{% trans 'Кошик' %}</a></li>
+        <li>{{ title }}</li>
+    </ul>
+{% endblock breadcrumb %}
+
+{% block content %}
+    <div style="text-align:centre;">
+        <h1 class="middle">{% trans 'Дякуємо!' %}</h1>
+        <p class="small">
+            {% trans 'Ваше замовлення успішно створено' %}.
+            {% trans 'Номер замовлення' %}: <strong>{{ order.id }}</strong>.
+        </p>
+    </div>
+{% endblock content %}
