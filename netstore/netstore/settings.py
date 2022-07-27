@@ -24,9 +24,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 CART_SESSION_ID = 'cart'
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5eyma*!73%z7h60+r(!x@757ca52-+42%s-=x#3uw^dz&4me*5'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
